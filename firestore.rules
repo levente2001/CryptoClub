@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // DEV ONLY: nyisd meg fejlesztéshez. Élesben védd le Auth-tal!
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

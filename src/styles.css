@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Small defaults */
+html, body {
+  height: 100%;
+}
+
+/* Better focus outlines */
+:focus-visible {
+  outline: 2px solid rgba(247, 147, 26, 0.6);
+  outline-offset: 2px;
+}
