@@ -331,7 +331,7 @@ export default function Checkout() {
               </div>
 
               <div className="text-xs text-gray-500">
-                * A fizetés után a rendelés státusza automatikusan <span className="text-gray-300">paid</span> lesz.
+                * Az árak forintban értendők, tartalmazzák a <span className="text-gray-300">27%-os</span>  áfát.
               </div>
             </div>
           </motion.div>
