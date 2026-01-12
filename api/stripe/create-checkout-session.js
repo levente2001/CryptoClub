@@ -38,9 +38,12 @@ export default async function handler(req, res) {
       return sendJson(res, 400, { error: "Cart is empty" });
     }
 
+    const currency = "huf";
+    const toMinor = (amountMajor) => Math.round(Number(amountMajor || 0) * 100);
+
     const line_items = items.map((i) => {
       const quantity = Math.max(1, Number(i.quantity || 1));
-      const unit_amount = Math.max(0, Math.round(Number(i.price || 0))); // HUF: 0-decimal
+      const unit_amount = Math.max(0, toMinor(i.price));
       return {
         quantity,
         price_data: {
@@ -53,7 +56,7 @@ export default async function handler(req, res) {
       };
     });
 
-    const shippingAmount = Math.max(0, Math.round(Number(shipping?.amount || 0)));
+    const shippingAmount = Math.max(0, toMinor(shipping?.amount)); 
     const shippingName = shipping?.name ? String(shipping.name) : "Szállítás";
     if (shippingAmount > 0) {
       line_items.push({
